@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { usePosts } from '@/hooks/usePosts';
 import { Loader2, Save, X, AlertCircle } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 interface PostEditorProps {
   postId?: string;
@@ -17,7 +18,7 @@ interface PostEditorProps {
 export const PostEditor: React.FC<PostEditorProps> = ({ postId, initialData }) => {
   const router = useRouter();
   const { createPost, updatePost, isCreating, isUpdating } = usePosts();
-  
+
   const [title, setTitle] = useState(initialData?.title || '');
   const [content, setContent] = useState(initialData?.content || '');
   const [category, setCategory] = useState(initialData?.category || '');
@@ -25,23 +26,23 @@ export const PostEditor: React.FC<PostEditorProps> = ({ postId, initialData }) =
   const [tagInput, setTagInput] = useState('');
   const [published, setPublished] = useState(initialData?.published || false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  
+
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
-    
+
     if (!title.trim()) newErrors.title = 'Title is required';
     if (!content.trim()) newErrors.content = 'Content is required';
     if (content.length < 50) newErrors.content = 'Content must be at least 50 characters';
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     const postData = {
@@ -56,13 +57,16 @@ export const PostEditor: React.FC<PostEditorProps> = ({ postId, initialData }) =
     try {
       if (postId) {
         await updatePost(postId, postData);
+        toast.success('Post updated successfully!');
       } else {
         await createPost(postData);
+        toast.success('Post created successfully!');
       }
       router.push('/dashboard');
     } catch (error) {
       console.error('Error saving post:', error);
       setErrors({ submit: 'Failed to save post. Please try again.' });
+      toast.error('Failed to save post. Please try again.');
     }
   };
 
@@ -121,9 +125,8 @@ export const PostEditor: React.FC<PostEditorProps> = ({ postId, initialData }) =
               setTitle(e.target.value);
               if (errors.title) setErrors(prev => ({ ...prev, title: '' }));
             }}
-            className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white transition-colors ${
-              errors.title ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
-            }`}
+            className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white transition-colors ${errors.title ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
+              }`}
             placeholder="Enter post title"
           />
           {errors.title && (
@@ -138,8 +141,8 @@ export const PostEditor: React.FC<PostEditorProps> = ({ postId, initialData }) =
           <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
             Content <span className="text-red-500">*</span>
           </label>
-        
-          
+
+
           <div className={errors.content ? 'border border-red-500 rounded-lg overflow-hidden' : ''}>
             <textarea
               ref={textareaRef}
@@ -149,13 +152,12 @@ export const PostEditor: React.FC<PostEditorProps> = ({ postId, initialData }) =
                 setContent(e.target.value);
                 if (errors.content) setErrors(prev => ({ ...prev, content: '' }));
               }}
-              className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white min-h-75 font-mono text-sm resize-none ${
-                errors.content ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
-              }`}
+              className={`w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white min-h-75 font-mono text-sm resize-none ${errors.content ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : 'border-gray-300'
+                }`}
               placeholder="Write blog content"
             />
           </div>
-          
+
           {errors.content && (
             <p className="mt-2 text-sm text-red-600 dark:text-red-400 flex items-center gap-1">
               <AlertCircle className="h-4 w-4" />
@@ -166,7 +168,7 @@ export const PostEditor: React.FC<PostEditorProps> = ({ postId, initialData }) =
             <p className="text-sm text-gray-500 dark:text-gray-400">
               Character count: {content.length}
             </p>
-           
+
           </div>
         </div>
 
@@ -215,7 +217,7 @@ export const PostEditor: React.FC<PostEditorProps> = ({ postId, initialData }) =
                 Add
               </button>
             </div>
-            
+
             {tags.length > 0 && (
               <div className="flex flex-wrap gap-2">
                 {tags.map((tag) => (
@@ -258,7 +260,7 @@ export const PostEditor: React.FC<PostEditorProps> = ({ postId, initialData }) =
               Publish immediately
             </label>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              {published 
+              {published
                 ? 'Post will be visible to readers immediately after saving.'
                 : 'Post will be saved as draft and not visible to readers.'
               }

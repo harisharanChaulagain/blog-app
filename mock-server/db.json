@@ -2,23 +2,13 @@
   "users": [
     {
       "id": "1",
-      "name": "John Doe",
-      "email": "john@example.com",
-      "password": "password123",
+      "name": "Hari Sharan Chaulagain",
+      "email": "hari@admin.com",
+      "password": "StrongPassword123!",
       "avatar": "https://i.pravatar.cc/150?img=1",
       "role": "admin",
       "createdAt": "2024-01-15T10:30:00.000Z",
       "updatedAt": "2024-01-15T10:30:00.000Z"
-    },
-    {
-      "id": "2",
-      "name": "Jane Smith",
-      "email": "jane@example.com",
-      "password": "password123",
-      "avatar": "https://i.pravatar.cc/150?img=2",
-      "role": "author",
-      "createdAt": "2024-01-16T14:20:00.000Z",
-      "updatedAt": "2024-01-16T14:20:00.000Z"
     }
   ],
   "posts": [
@@ -50,204 +40,14 @@
       "updatedAt": "2024-01-15T14:30:00.000Z"
     },
     {
-      "title": "new one ok",
-      "content": "dsf \n**asdf\n asdf asdf **\nasd\n fasd\n fs\ndf \nasd\nf as\nfa\n sdf\na ",
-      "category": "Technology",
-      "tags": [
-        "sdfa"
-      ],
-      "published": true,
-      "excerpt": "dsf \n**asdf\n asdf asdf **\nasd\n fasd\n fs\ndf \nasd\nf as\nfa\n sdf\na ...",
-      "id": "1768838130236",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "slug": "new-one",
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-19T15:55:30.236Z",
-      "updatedAt": "2026-01-19T15:55:30.236Z"
-    },
-    {
-      "title": "sadfasd ",
-      "content": "sadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasd",
-      "category": "",
-      "tags": [],
-      "published": false,
-      "excerpt": "sadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfasd fasdsadfas...",
-      "id": "1768919261914",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "slug": "sadfasd-",
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-20T14:27:41.914Z",
-      "updatedAt": "2026-01-20T14:27:41.914Z"
-    },
-    {
-      "title": "asdf",
-      "content": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f",
-      "category": "",
-      "tags": [],
-      "published": true,
-      "excerpt": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f...",
-      "id": "1768919573953",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "slug": "asdf",
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-20T14:32:53.953Z",
-      "updatedAt": "2026-01-20T14:32:53.953Z"
-    },
-    {
-      "title": "df asdf",
+      "title": " up asdf als",
       "content": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f",
       "category": "",
       "tags": [],
       "published": false,
       "excerpt": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f...",
-      "id": "1768919581645",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "slug": "df-asdf",
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-20T14:33:01.645Z",
-      "updatedAt": "2026-01-20T14:33:01.645Z"
-    },
-    {
-      "title": "as dfasdf",
-      "content": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f",
-      "category": "",
-      "tags": [],
-      "published": false,
-      "excerpt": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f...",
-      "id": "1768919588234",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "slug": "as-dfasdf",
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-20T14:33:08.234Z",
-      "updatedAt": "2026-01-20T14:33:08.234Z"
-    },
-    {
-      "title": "dsfg mksld",
-      "content": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f",
-      "category": "",
-      "tags": [],
-      "published": false,
-      "excerpt": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f...",
-      "id": "1768919607561",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "slug": "dsfg-mksld",
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-20T14:33:27.561Z",
-      "updatedAt": "2026-01-20T14:33:27.561Z"
-    },
-    {
-      "title": "adsf iaksdf;a",
-      "content": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f",
-      "category": "",
-      "tags": [],
-      "published": false,
-      "excerpt": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f...",
-      "id": "1768919614381",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "slug": "adsf-iaksdf-a",
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-20T14:33:34.381Z",
-      "updatedAt": "2026-01-20T14:33:34.381Z"
-    },
-    {
-      "title": "sf kamsdf;asd",
-      "content": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f",
-      "category": "",
-      "tags": [],
-      "published": false,
-      "excerpt": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f...",
-      "id": "1768919620821",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "slug": "sf-kamsdf-asd",
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-20T14:33:40.821Z",
-      "updatedAt": "2026-01-20T14:33:40.821Z"
-    },
-    {
-      "title": "asdf als",
-      "content": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f",
-      "category": "",
-      "tags": [],
-      "published": false,
-      "excerpt": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f...",
-      "id": "1768919627642",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "slug": "asdf-als",
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-20T14:33:47.642Z",
-      "updatedAt": "2026-01-20T14:33:47.642Z"
+      "updatedAt": "2026-01-20T15:55:58.461Z",
+      "id": "1768919627642"
     },
     {
       "title": "sdf askldfa",
@@ -270,6 +70,50 @@
       "commentsCount": 0,
       "createdAt": "2026-01-20T14:33:57.993Z",
       "updatedAt": "2026-01-20T14:33:57.993Z"
+    },
+    {
+      "title": "asfaa",
+      "content": "sf  s sdfa sf sf  s sf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  s",
+      "category": "",
+      "tags": [],
+      "published": false,
+      "excerpt": "sf  s sdfa sf sf  s sf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  s...",
+      "id": "1768924422073",
+      "slug": "asfaa",
+      "author": {
+        "id": "1",
+        "name": "Current User",
+        "avatar": "https://i.pravatar.cc/150?img=1"
+      },
+      "featured": false,
+      "readTime": 1,
+      "views": 0,
+      "likes": 0,
+      "commentsCount": 0,
+      "createdAt": "2026-01-20T15:53:42.073Z",
+      "updatedAt": "2026-01-20T15:53:42.073Z"
+    },
+    {
+      "title": "sdf a;sdf",
+      "content": "df asdf asklfm asl;dmf'askldf 'asdf adsfads'lkf asd'fadsf ",
+      "category": "",
+      "tags": [],
+      "published": false,
+      "excerpt": "df asdf asklfm asl;dmf'askldf 'asdf adsfads'lkf asd'fadsf ...",
+      "id": "1768924547990",
+      "slug": "sdf-a-sdf",
+      "author": {
+        "id": "1",
+        "name": "Current User",
+        "avatar": "https://i.pravatar.cc/150?img=1"
+      },
+      "featured": false,
+      "readTime": 1,
+      "views": 0,
+      "likes": 0,
+      "commentsCount": 0,
+      "createdAt": "2026-01-20T15:55:47.990Z",
+      "updatedAt": "2026-01-20T15:55:47.990Z"
     }
   ],
   "categories": [

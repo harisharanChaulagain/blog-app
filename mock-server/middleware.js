@@ -1,108 +1,55 @@
 const jwt = require('jsonwebtoken');
+const fs = require('fs');
+const path = require('path');
 
-// Mock secret key (in production, use environment variable)
-const JWT_SECRET = 'your-super-secret-jwt-key-change-this-in-production';
+const JWT_SECRET = 'thisissecret';
 
 module.exports = (req, res, next) => {
-  // Add delay to simulate real API
   setTimeout(() => {
-    // Handle authentication
     if (req.url === '/api/auth/login' && req.method === 'POST') {
       let body = '';
-      
+
       req.on('data', chunk => {
         body += chunk.toString();
       });
-      
+
       req.on('end', () => {
         try {
           const { email, password } = JSON.parse(body);
-          
-          // Mock user validation
-          if (email === 'demo@example.com' && password === 'password123') {
-            const user = {
-              id: '1',
-              name: 'Demo User',
-              email: 'demo@example.com',
-              role: 'admin'
-            };
-            
-            const token = jwt.sign(
-              { userId: user.id, email: user.email },
-              JWT_SECRET,
-              { expiresIn: '24h' }
-            );
-            
-            res.writeHead(200, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({
-              success: true,
-              user,
-              token,
-              message: 'Login successful'
-            }));
-          } else {
+
+          const usersPath = path.join(__dirname, 'users.json');
+          const usersData = JSON.parse(fs.readFileSync(usersPath, 'utf-8'));
+          const users = usersData.users;
+
+          const user = users.find(u => u.email === email && u.password === password);
+
+          if (!user) {
             res.writeHead(401, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({
               success: false,
-              message: 'Invalid credentials'
-            }));
-          }
-        } catch (error) {
-          res.writeHead(400, { 'Content-Type': 'application/json' });
-          res.end(JSON.stringify({
-            success: false,
-            message: 'Invalid request'
-          }));
-        }
-      });
-      
-      return;
-    }
-    
-    // Handle registration
-    if (req.url === '/api/auth/register' && req.method === 'POST') {
-      let body = '';
-      
-      req.on('data', chunk => {
-        body += chunk.toString();
-      });
-      
-      req.on('end', () => {
-        try {
-          const { name, email, password } = JSON.parse(body);
-          
-          // Check if user already exists
-          if (email === 'demo@example.com') {
-            res.writeHead(409, { 'Content-Type': 'application/json' });
-            res.end(JSON.stringify({
-              success: false,
-              message: 'User already exists'
+              message: 'Invalid email or password'
             }));
             return;
           }
-          
-          // Create new user
-          const newUser = {
-            id: Date.now().toString(),
-            name,
-            email,
-            role: 'user',
-            createdAt: new Date().toISOString(),
-            updatedAt: new Date().toISOString()
-          };
-          
+
           const token = jwt.sign(
-            { userId: newUser.id, email: newUser.email },
+            { userId: user.id, email: user.email, role: user.role },
             JWT_SECRET,
             { expiresIn: '24h' }
           );
-          
-          res.writeHead(201, { 'Content-Type': 'application/json' });
+
+          res.writeHead(200, { 'Content-Type': 'application/json' });
           res.end(JSON.stringify({
             success: true,
-            user: newUser,
+            user: {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              role: user.role,
+              avatar: user.avatar,
+            },
             token,
-            message: 'Registration successful'
+            message: 'Login successful'
           }));
         } catch (error) {
           res.writeHead(400, { 'Content-Type': 'application/json' });
@@ -112,48 +59,10 @@ module.exports = (req, res, next) => {
           }));
         }
       });
-      
+
       return;
     }
-    
-    // Handle token verification
-    if (req.url === '/api/auth/verify' && req.method === 'GET') {
-      const authHeader = req.headers['authorization'];
-      
-      if (!authHeader || !authHeader.startsWith('Bearer ')) {
-        res.writeHead(401, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({
-          success: false,
-          message: 'No token provided'
-        }));
-        return;
-      }
-      
-      const token = authHeader.split(' ')[1];
-      
-      try {
-        const decoded = jwt.verify(token, JWT_SECRET);
-        
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({
-          success: true,
-          user: {
-            id: decoded.userId,
-            email: decoded.email
-          }
-        }));
-      } catch (error) {
-        res.writeHead(401, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({
-          success: false,
-          message: 'Invalid token'
-        }));
-      }
-      
-      return;
-    }
-    
-    // Handle logout
+
     if (req.url === '/api/auth/logout' && req.method === 'POST') {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify({
@@ -162,14 +71,13 @@ module.exports = (req, res, next) => {
       }));
       return;
     }
-    
-    // Handle protected routes - check token
+
     const protectedRoutes = ['/api/posts', '/api/profile'];
     const isProtectedRoute = protectedRoutes.some(route => req.url.startsWith(route));
-    
+
     if (isProtectedRoute && req.method !== 'GET') {
       const authHeader = req.headers['authorization'];
-      
+
       if (!authHeader || !authHeader.startsWith('Bearer ')) {
         res.writeHead(401, { 'Content-Type': 'application/json' });
         res.end(JSON.stringify({
@@ -179,8 +87,7 @@ module.exports = (req, res, next) => {
         return;
       }
     }
-    
-    // Continue to JSON Server
+
     next();
-  }, 500); // 500ms delay to simulate network
+  }, 500);
 };

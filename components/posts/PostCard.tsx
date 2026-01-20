@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { formatDistanceToNow } from 'date-fns';
 import { useRouter } from 'next/navigation';
-import { Post } from '@/store/postsSlice';
+import { Post } from '@/store/postSlice';
 
 interface PostCardProps {
   post: Post;

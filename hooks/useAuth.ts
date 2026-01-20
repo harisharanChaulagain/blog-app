@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { setCredentials, logout, setLoading, setError } from '@/store/authSlice';
 import { RootState } from '@/store/store';
 import { authService } from '@/services/api';
+import { toast } from 'sonner';
 
 export const useAuth = () => {
   const dispatch = useDispatch();
@@ -35,32 +36,11 @@ export const useAuth = () => {
     [dispatch, router]
   );
 
-  const register = useCallback(
-    async (name: string, email: string, password: string) => {
-      dispatch(setLoading(true));
-      dispatch(setError(null));
-      
-      try {
-        const response = await authService.register(name, email, password);
-        dispatch(setCredentials({
-          user: response.user,
-          token: response.token,
-        }));
-        router.push('/dashboard');
-        return { success: true };
-      } catch (err: any) {
-        dispatch(setError(err.message || 'Registration failed'));
-        return { success: false, error: err.message };
-      } finally {
-        dispatch(setLoading(false));
-      }
-    },
-    [dispatch, router]
-  );
 
   const logoutUser = useCallback(() => {
     dispatch(logout());
     router.push('/login');
+    toast.success("Logged out successfully!")
   }, [dispatch, router]);
 
   return {
@@ -70,7 +50,6 @@ export const useAuth = () => {
     isLoading,
     error,
     login,
-    register,
     logout: logoutUser,
   };
 };

@@ -4,6 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useAuth } from '@/hooks/useAuth';
 import { Loader2 } from 'lucide-react';
+import { toast } from 'sonner';
 
 const schema = yup.object({
   email: yup.string().email('Invalid email').required('Email is required'),
@@ -22,20 +23,30 @@ export const LoginForm: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: LoginFormData) => {
+const onSubmit = async (data: LoginFormData) => {
+  try {
     await login(data.email, data.password);
-  };
+    toast.success('Logged in successfully!');
+  } catch (error: any) {
+    console.error('Login failed:', error);
+    toast.error(error?.message || 'Failed to login. Please try again.');
+  }
+};
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+    <div className="min-h-screen flex items-center justify-center bg-linear-to-tr from-blue-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full bg-white dark:bg-gray-800 shadow-md rounded-2xl p-8 space-y-6">
+        <div className="text-center">
+          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white">
             Sign in to your account
           </h2>
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            Enter your email and password to access your dashboard
+          </p>
         </div>
-        <form className="mt-8 space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          <div className="rounded-md shadow-sm -space-y-px">
+
+        <form className="mt-6 space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <div className="space-y-4">
             <div>
               <label htmlFor="email" className="sr-only">
                 Email address
@@ -43,13 +54,16 @@ export const LoginForm: React.FC = () => {
               <input
                 {...register('email')}
                 type="email"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
+                className={`appearance-none block w-full px-4 py-3 border rounded-lg text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
+                  errors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
               {errors.email && (
                 <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
               )}
             </div>
+
             <div>
               <label htmlFor="password" className="sr-only">
                 Password
@@ -57,8 +71,10 @@ export const LoginForm: React.FC = () => {
               <input
                 {...register('password')}
                 type="password"
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
+                className={`appearance-none block w-full px-4 py-3 border rounded-lg text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition ${
+                  errors.password ? 'border-red-500' : 'border-gray-300'
+                }`}
               />
               {errors.password && (
                 <p className="mt-1 text-sm text-red-600">{errors.password.message}</p>
@@ -67,8 +83,8 @@ export const LoginForm: React.FC = () => {
           </div>
 
           {error && (
-            <div className="rounded-md bg-red-50 p-4">
-              <div className="text-sm text-red-700">{error}</div>
+            <div className="rounded-md bg-red-50 dark:bg-red-900/20 p-4 mt-2">
+              <p className="text-sm text-red-700 dark:text-red-400">{error}</p>
             </div>
           )}
 
@@ -76,7 +92,7 @@ export const LoginForm: React.FC = () => {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full flex justify-center py-3 px-6 border border-transparent text-sm font-medium rounded-lg text-white bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all cursor-pointer"
             >
               {isLoading ? (
                 <>
@@ -88,13 +104,8 @@ export const LoginForm: React.FC = () => {
               )}
             </button>
           </div>
-
-          <div className="text-sm text-center">
-            <a href="/register" className="font-medium text-blue-600 hover:text-blue-500">
-              Don't have an account? Sign up
-            </a>
-          </div>
         </form>
+
       </div>
     </div>
   );

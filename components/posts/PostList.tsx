@@ -5,6 +5,7 @@ import { Search, Filter, Plus, Grid3x3, List, ChevronLeft, ChevronRight } from '
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/hooks/useAuth';
 import { AlertCircle } from 'lucide-react';
+import { toast } from 'sonner';
 
 export const PostList: React.FC = () => {
   const router = useRouter();
@@ -44,9 +45,11 @@ export const PostList: React.FC = () => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
         await deletePost(id);
+        toast.success('Post deleted successfully!');
+        refetchPosts();
       } catch (error) {
         console.error('Failed to delete post:', error);
-        alert('Failed to delete post. Please try again.');
+        toast.error('Failed to delete post. Please try again.');
       }
     }
   };
@@ -153,8 +156,8 @@ export const PostList: React.FC = () => {
             <button
               onClick={() => setViewMode('grid')}
               className={`p-2 rounded transition-colors ${viewMode === 'grid'
-                  ? 'bg-white dark:bg-gray-700 shadow-sm'
-                  : 'hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-white dark:bg-gray-700 shadow-sm'
+                : 'hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
               title="Grid view"
             >
@@ -163,8 +166,8 @@ export const PostList: React.FC = () => {
             <button
               onClick={() => setViewMode('list')}
               className={`p-2 rounded transition-colors ${viewMode === 'list'
-                  ? 'bg-white dark:bg-gray-700 shadow-sm'
-                  : 'hover:bg-gray-200 dark:hover:bg-gray-700'
+                ? 'bg-white dark:bg-gray-700 shadow-sm'
+                : 'hover:bg-gray-200 dark:hover:bg-gray-700'
                 }`}
               title="List view"
             >
@@ -355,8 +358,8 @@ export const PostList: React.FC = () => {
                       window.scrollTo({ top: 0, behavior: 'smooth' });
                     }}
                     className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${currentPage === pageNum
-                        ? 'bg-blue-600 text-white'
-                        : 'border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                      ? 'bg-blue-600 text-white'
+                      : 'border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                       }`}
                   >
                     {pageNum}

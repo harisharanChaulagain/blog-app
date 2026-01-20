@@ -1,4 +1,3 @@
-import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import {
   useGetPostsQuery,
@@ -9,6 +8,7 @@ import {
   CreatePostDTO,
   UpdatePostDTO,
   PostFilters,
+  useGetPostQuery,
 } from "@/store/postSlice";
 import { RootState } from "@/store/store";
 
@@ -39,56 +39,27 @@ export const usePosts = (filters?: PostFilters) => {
     skip: !token,
   });
 
-  const createPost = useCallback(
-    async (postData: CreatePostDTO) => {
-      if (!token) {
-        throw new Error("No authentication token found");
-      }
+  const createPost = async (postData: CreatePostDTO) => {
+    if (!token) throw new Error("No authentication token found");
+    return await createPostMutation(postData).unwrap();
+  };
 
-      try {
-        const result = await createPostMutation(postData).unwrap();
-        return result;
-      } catch (error) {
-        console.error("Error creating post:", error);
-        throw error;
-      }
-    },
-    [createPostMutation, token]
-  );
+  const updatePost = async (id: string, data: UpdatePostDTO) => {
+    if (!token) throw new Error("No authentication token found");
+    return await updatePostMutation({ id, data }).unwrap();
+  };
 
-  const updatePost = useCallback(
-    async (id: string, data: UpdatePostDTO) => {
-      if (!token) {
-        throw new Error("No authentication token found");
-      }
+  const deletePost = async (id: string) => {
+    if (!token) throw new Error("No authentication token found");
+    try {
+      await deletePostMutation(id).unwrap();
+      refetchPosts();
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-      try {
-        const result = await updatePostMutation({ id, data }).unwrap();
-        return result;
-      } catch (error) {
-        console.error("Error updating post:", error);
-        throw error;
-      }
-    },
-    [updatePostMutation, token]
-  );
-
-  const deletePost = useCallback(
-    async (id: string) => {
-      if (!token) {
-        throw new Error("No authentication token found");
-      }
-
-      try {
-        await deletePostMutation(id).unwrap();
-        return id;
-      } catch (error) {
-        console.error("Error deleting post:", error);
-        throw error;
-      }
-    },
-    [deletePostMutation, token]
-  );
+  const getPostQuery = (id: string) => useGetPostQuery(id);
 
   return {
     posts: postsData?.data || [],
@@ -98,21 +69,18 @@ export const usePosts = (filters?: PostFilters) => {
       total: 0,
       totalPages: 0,
     },
-
     categories: categories || [],
-
     isLoading: isLoadingPosts,
     isLoadingCategories,
     isCreating,
     isUpdating,
     isDeleting,
-
     error: postsError || createError || updateError || deleteError,
     categoriesError,
-
     createPost,
     updatePost,
     deletePost,
     refetchPosts,
+    getPostQuery,
   };
 };
