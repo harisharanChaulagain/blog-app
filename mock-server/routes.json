@@ -1,0 +1,14 @@
+{
+  "/api/*": "/$1",
+  "/auth/login": "/api/auth/login",
+  "/auth/register": "/api/auth/register",
+  "/auth/verify": "/api/auth/verify",
+  "/auth/logout": "/api/auth/logout",
+  "/posts/:id/comments": "/comments?postId=:id",
+  "/categories/:id/posts": "/posts?category=:id",
+  "/tags/:tag/posts": "/posts?tags_like=:tag",
+  "/users/:id/posts": "/posts?author.id=:id",
+  "/featured-posts": "/posts?featured=true",
+  "/published-posts": "/posts?published=true",
+  "/search/posts": "/posts"
+}
