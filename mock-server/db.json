@@ -13,73 +13,16 @@
   ],
   "posts": [
     {
-      "id": "1",
-      "title": "Getting Started with React",
-      "slug": "getting-started-with-react",
-      "content": "# Getting Started with React\n\nReact is a JavaScript library for building user interfaces. It was developed by Facebook and is now maintained by Facebook and a community of individual developers and companies.\n\n## Key Features\n\n- **Component-Based**: Build encapsulated components that manage their own state\n- **Declarative**: Design simple views for each state in your application\n- **Learn Once, Write Anywhere**: You can develop new features in React without rewriting existing code\n\n```jsx\nfunction Welcome(props) {\n  return <h1>Hello, {props.name}</h1>;\n}\n```\n\n## Why React?\n\nReact makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.",
-      "excerpt": "Learn the basics of React and how to start building modern web applications with this popular JavaScript library.",
-      "author": {
-        "id": "1",
-        "name": "John Doe",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
+      "title": "Vynspire AI Labs: Frontend Developer Technical Task",
+      "content": "\nVynspire AI Labs HR <hr@vynspirelabs.ai>\nAttachments\nJan 18, 2026, 2:27 PM (2 days ago)\nto bidhanpoudel10, bcc: me\n\nDear Candidate,\n\nCongratulations on being shortlisted for the Technical screening for the Frontend Developer position at Vynspire AI Labs! We were impressed with your background and skills, and we’re excited to move forward with your application.\n\nTechnical Task: As part of the selection process, we’d like you to complete a technical task designed to assess your problem-solving and coding abilities. Your performance in this task will determine whether you advance to the next stage—a technical interview with our team.\n\nThe details of the technical task are mentioned below:\nEstimated Time: Maximum 2-3 Hours \nDeadline: 21st January, Wednesday, 2026.\nTime:  12:00 P.M. (NPT)\nSubmission: Zip File or Github Repo Link",
       "category": "Technology",
       "tags": [
-        "react",
-        "javascript",
-        "frontend",
-        "web-development"
+        "Zip File"
       ],
-      "published": true,
-      "featured": true,
-      "readTime": 5,
-      "views": 1245,
-      "likes": 89,
-      "commentsCount": 23,
-      "createdAt": "2024-01-10T09:15:00.000Z",
-      "updatedAt": "2024-01-15T14:30:00.000Z"
-    },
-    {
-      "title": " up asdf als",
-      "content": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f",
-      "category": "",
-      "tags": [],
       "published": false,
-      "excerpt": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f...",
-      "updatedAt": "2026-01-20T15:55:58.461Z",
-      "id": "1768919627642"
-    },
-    {
-      "title": "sdf askldfa",
-      "content": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f",
-      "category": "",
-      "tags": [],
-      "published": false,
-      "excerpt": "ds ifmaskldfdask f ds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask fds ifmaskldfdask f...",
-      "id": "1768919637993",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "slug": "sdf-askldfa",
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-20T14:33:57.993Z",
-      "updatedAt": "2026-01-20T14:33:57.993Z"
-    },
-    {
-      "title": "asfaa",
-      "content": "sf  s sdfa sf sf  s sf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  s",
-      "category": "",
-      "tags": [],
-      "published": false,
-      "excerpt": "sf  s sdfa sf sf  s sf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  ssf  s...",
-      "id": "1768924422073",
-      "slug": "asfaa",
+      "excerpt": "\nVynspire AI Labs HR <hr@vynspirelabs.ai>\nAttachments\nJan 18, 2026, 2:27 PM (2 days ago)\nto bidhanpoudel10, bcc: me\n\nDear Candidate,\n\nCongratulations ...",
+      "id": "1768925363289",
+      "slug": "vynspire-ai-labs-frontend-developer-technical-task",
       "author": {
         "id": "1",
         "name": "Current User",
@@ -90,30 +33,8 @@
       "views": 0,
       "likes": 0,
       "commentsCount": 0,
-      "createdAt": "2026-01-20T15:53:42.073Z",
-      "updatedAt": "2026-01-20T15:53:42.073Z"
-    },
-    {
-      "title": "sdf a;sdf",
-      "content": "df asdf asklfm asl;dmf'askldf 'asdf adsfads'lkf asd'fadsf ",
-      "category": "",
-      "tags": [],
-      "published": false,
-      "excerpt": "df asdf asklfm asl;dmf'askldf 'asdf adsfads'lkf asd'fadsf ...",
-      "id": "1768924547990",
-      "slug": "sdf-a-sdf",
-      "author": {
-        "id": "1",
-        "name": "Current User",
-        "avatar": "https://i.pravatar.cc/150?img=1"
-      },
-      "featured": false,
-      "readTime": 1,
-      "views": 0,
-      "likes": 0,
-      "commentsCount": 0,
-      "createdAt": "2026-01-20T15:55:47.990Z",
-      "updatedAt": "2026-01-20T15:55:47.990Z"
+      "createdAt": "2026-01-20T16:09:23.289Z",
+      "updatedAt": "2026-01-20T16:09:23.289Z"
     }
   ],
   "categories": [
